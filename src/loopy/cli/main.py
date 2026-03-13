@@ -14,6 +14,12 @@ def main():
     if args.command == "triangle":
         from loopy.experiments.triangle import run
         run()
+    elif args.command == "square":
+        from loopy.experiments.square import run
+        run()
+    elif args.command == "dating":
+        from loopy.experiments.dating import run
+        run()
     elif args.command is None:
         parser.print_help()
     else:
