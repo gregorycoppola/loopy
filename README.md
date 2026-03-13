@@ -36,30 +36,36 @@ et al. 2003), which approximates but does not in general equal the
 true posterior.
 
 **Empirically established (Paper 1, coppola2024):**
-The dating graph — `lonely(jack)` and `exciting(jill)` feeding into
-`like(jack, jill)` via disjunction, with `like(jack, jill)` and
-`like(jill, xjack)` feeding into `date(jack, jill)` via conjunction
-— is a loopy structure. Iterative BP was run on this graph and
-converged to correct posteriors across all tested configurations.
-This is direct evidence that the transformer implementing BP faithfully
-would exhibit the same behavior.
+The dating graph is a loopy structure. Iterative BP was run on this
+graph and converged to correct posteriors across all tested
+configurations. The transformer implementing BP faithfully would
+exhibit the same behavior.
 
 **From the literature:**
 Loopy BP has been found to converge empirically across a wide range
 of graph structures (Murphy et al. 1999, Smith and Eisner 2008).
 On graphs with weak loops or small treewidth the Bethe approximation
-is often tight. Conditions under which loopy BP is exact are known
-for certain graph classes and potential functions but a general theory
-is open.
+is often tight.
 
 ## The Strongest Claim We Can Make Now
 
 The transformer with BP weights implements belief propagation on any
 factor graph. On trees, the result is provably exact. On loopy graphs,
-the transformer inherits BP's empirical track record — which is strong
-— without a theoretical exactness guarantee. For QBBN graphs arising
-from grounded natural language knowledge bases, the loop structure is
-constrained by the grammar and the grounding, which may be exploitable
-for tighter guarantees.
+the transformer inherits BP's empirical track record without a
+theoretical exactness guarantee. For QBBN graphs arising from grounded
+natural language knowledge bases, the loop structure is constrained
+by the grammar and the grounding, which may be exploitable for tighter
+guarantees.
 
 ## Structure of This Repo
+
+    context/        background and literature
+    experiments/    empirical results and analysis
+    theory/         what is known formally and conjectured
+
+## Relation to Other Repos
+
+- `transformer-bp-lean` — proves the transformer implements BP on any graph
+- `hard-bp-lean` — proves BP is exact on trees
+- `bayes-learner` — empirical confirmation that gradient descent finds BP weights
+- `shannon` — the paper; loopy limitation discussed in Section 15
