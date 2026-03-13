@@ -13,16 +13,16 @@ def random_two_loops(seed: int = None) -> FactorGraph:
     Four variables, two loops, shared v1-v2 edge.
 
         v0
-       /  \
+       /  \\
       v1 - v2
-       \  /
+       \\  /
         v3
     """
     rng = np.random.default_rng(seed)
     factors = {
         (0, 1): rng.uniform(0.1, 1.0, (2, 2)),
         (0, 2): rng.uniform(0.1, 1.0, (2, 2)),
-        (1, 2): rng.uniform(0.1, 1.0, (2, 2)),  # shared edge
+        (1, 2): rng.uniform(0.1, 1.0, (2, 2)),
         (1, 3): rng.uniform(0.1, 1.0, (2, 2)),
         (2, 3): rng.uniform(0.1, 1.0, (2, 2)),
     }
